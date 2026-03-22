@@ -10,8 +10,9 @@ body {
 
 #buttons {
   display: flex;
-  justify-content:space-between;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;   /* center buttons */
+  flex-wrap: wrap;           /* prevents overflow */
 }
 
 .btn {
@@ -25,4 +26,8 @@ body {
 
 .btn:hover {
   background-color: #4a2478;
+}
+audio {
+  display: block;
+  margin-top: 20px;
 }
