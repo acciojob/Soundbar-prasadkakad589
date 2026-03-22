@@ -1,9 +1,12 @@
 const buttons = document.querySelectorAll(".btn");
+
 let currentAudio = null;
 
-buttons.forEach(button => {
-  button.addEventListener("click", () => {
-    if (button.classList.contains("stop")) {
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    // Stop button
+    if (btn.classList.contains("stop")) {
       if (currentAudio) {
         currentAudio.pause();
         currentAudio.currentTime = 0;
@@ -11,21 +14,16 @@ buttons.forEach(button => {
       return;
     }
 
-    const sound = button.dataset.sound;
-    const audioPath = `sounds/${sound}.mp3`;
+    const sound = btn.getAttribute("data-sound");
 
-    console.log("Playing:", audioPath); // debug
-
+    // Stop previous sound
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
     }
 
-    currentAudio = new Audio(audioPath);
-
-    currentAudio.play().catch(err => {
-      console.error("Error playing audio:", err);
-      alert("Sound file not found or blocked!");
-    });
+    // Play new sound
+    currentAudio = new Audio(`sounds/${sound}.mp3`);
+    currentAudio.play();
   });
 });
